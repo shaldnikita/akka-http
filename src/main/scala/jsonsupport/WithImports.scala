@@ -5,10 +5,6 @@ import akka.http.scaladsl.server.Directives
 import spray.json.DefaultJsonProtocol
 
 
-final case class Item(name: String, id: Long)
-
-final case class Order(items: List[Item])
-
 trait JsonSupport extends SprayJsonSupport with DefaultJsonProtocol {
   implicit val itemFormat = jsonFormat2(Item)
   implicit val orderFormat = jsonFormat1(Order) // contains List[Item]
